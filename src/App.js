@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {HomePage} from './pages/homepage/homepage.component';
 import { Link, Route } from 'react-router-dom';
-// import { Link } from 'react-router';
 
 import './App.css';
+
+import HomePage from './pages/homepage/homepage.component';
+import ShopPage from './pages/shop/shop.component';
 
 const HatsPage = (props) => {
   console.log(props);
@@ -19,7 +20,7 @@ function App() {
     <div>
         <Route exact path='/' component={HomePage} />
         {/* <HomePage/> */}
-        <Route exact path='/shop/hats' component={HatsPage} />
+        <Route exact path='/shop' component={ShopPage} />
         {/* <Route path='/hats/:hatsId' component={HatsItems} /> */}
     </div>
   );
