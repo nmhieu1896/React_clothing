@@ -5,7 +5,7 @@ import "./menu-item.styles.scss";
 
 const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
   <div 
-    className={`${size} menu-item`}
+    className={`${size ? size : ''} menu-item`}
     onClick = {() => history.push(`${match.url}${linkUrl}`)}
   >
     <div
@@ -13,7 +13,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
       style={{
         backgroundImage: `url(${imageUrl})`
       }}
-      />
+    />
       <div className="content">
         <h1 className="title">{title.toUpperCase()}</h1>
         <span className="subtitle">SHOP NOW</span>
