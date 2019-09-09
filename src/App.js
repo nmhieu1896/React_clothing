@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import "./App.css";
 
@@ -11,6 +11,7 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.action';
 
 import { connect } from 'react-redux';
+// import userReducer from "./redux/user/user.reducer";
 
 
 class App extends React.Component {
@@ -49,7 +50,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          <Route path="/signin" component={SignInUpPage} />
+          {/* <Route path="/signin" component={SignInUpPage} /> */}
+          <Route exact path="/signin" render={() => this.props.currentUser ? (<Redirect to='/'/>) : (<SignInUpPage/>)} />
         </Switch>
       </div>
     );
@@ -57,8 +59,12 @@ class App extends React.Component {
 
 }
 
+const mapStateToProps = ({user}) => ({ //Phải là ({user}) thay vì user Do tham số truyền vào là object combineReducer 
+  currentUser: user.currentUser  // Tạo this.props.currentUser cho Class
+})
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
