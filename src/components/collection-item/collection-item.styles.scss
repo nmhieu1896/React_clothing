@@ -15,7 +15,7 @@
     transition: .3s;
   }
 
-  .custom-button {
+  button {
     width: 80%;
     position: absolute;
     top: 250px;
@@ -28,7 +28,7 @@
       opacity: .8;
     }
 
-    .custom-button {
+    button {
       display: block;
     }
   }

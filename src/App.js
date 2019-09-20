@@ -20,7 +20,7 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, collectionArray } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -69,7 +69,7 @@ class App extends React.Component {
 // })
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser // Tạo this.props.currentUser cho Class
+  currentUser: selectCurrentUser, // Tạo this.props.currentUser cho Class
 });
 
 const mapDispatchToProps = dispatch => ({

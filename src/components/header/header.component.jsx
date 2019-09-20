@@ -10,37 +10,39 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { selectcartHidden } from '../../redux/cart/cart.selector';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 
-import "./header.styles.scss";
+// import "./header.styles.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
-const Header = ({ currentUser, hidden }) => ( // Truyền props từ hàm mapStateToProps
-  <div className="header">
-    <Link className="logo-container" to="/">
-      <Logo className="logo" />
-    </Link>
+import {HeaderContainer, LogoContainer, OptionsContainer, OptionLink } from './header.styles';
 
-    <div className="options">
-      <Link className="option" to="/shop">
+const Header = ({ currentUser, hidden }) => ( // Truyền props từ hàm mapStateToProps
+  <HeaderContainer>
+    <LogoContainer to="/">
+      <Logo className="logo" />
+    </LogoContainer>
+
+    <OptionsContainer>
+      <OptionLink to="/shop">
         SHOP
-      </Link>
-      <Link className="option" to="/contact">
+      </OptionLink>
+      <OptionLink to="/contact">
         CONTACT
-      </Link>
+      </OptionLink>
       {currentUser ? (
-        <div className="option" onClick={() => auth.signOut()}>
+        <OptionLink as='div' onClick={() => auth.signOut()}>
           SIGN OUT
-        </div>
+        </OptionLink>
       ) : (
-        <Link className="option" to="/signin">
+        <OptionLink to="/signin">
           SIGN IN
-        </Link>
+        </OptionLink>
       )}
       <CartIcon/>
-    </div>
+    </OptionsContainer>
     {
       hidden ? null : <CartDropdown/>
     }
-  </div>
+  </HeaderContainer>
 );
 
 // const mapStateToProps = ({ user: {currentUser}, cart: {hidden} }) => ({
