@@ -14,7 +14,7 @@ export const selectCollectionsForPreview = createSelector(
 
 export const selectIsCollectionsFetching = createSelector(
   [selectShop],
-  shop => shop.isFetching
+  shop => shop.collections ? shop.isFetching : true  //data chưa có thì isLoading hết
 );
 
 export const selectCollection = collectionUrlParam =>
