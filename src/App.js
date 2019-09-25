@@ -12,6 +12,7 @@ import Header from "./components/header/header.component";
 // import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { checkUserSession } from "./redux/user/user.action";
 import { selectCurrentUser } from "./redux/user/user.selector";
+import Spinner from './components/spinner/spinner.component';
 
 import { connect } from "react-redux";
 // import userReducer from "./redux/user/user.reducer";
@@ -30,7 +31,7 @@ const App = ({ currentUser, checkUserSession }) => {
     <div>
       <Header />
       <Switch>
-        <Suspense fallback={<div>...Loading</div>}>
+        <Suspense fallback={<Spinner/>}>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
           <Route exact path="/checkout" component={CheckoutPage} />
