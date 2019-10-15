@@ -6,4 +6,10 @@
   .title {
     margin: 10px 0;
   }
+
+  @media screen and (max-width: 1024px) {
+    max-width: 500px;
+    margin-bottom: 100px;
+    width: 75%;
+}
 }

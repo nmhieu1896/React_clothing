@@ -24,6 +24,10 @@
 
     &.large {
       height: 380px;
+
+      @media screen and (max-width: 800px) {
+        height: 200px;
+      }
     }
 
     &:first-child {
@@ -34,6 +38,9 @@
       margin-left: 7.5px;
     }
 
+    @media screen and (max-width: 800px) {
+      height: 200px;
+    }
     
     .bg-image{
       width: 100%;
